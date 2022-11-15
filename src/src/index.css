@@ -8,12 +8,14 @@ body {
   color: white;
   background-color: black;
 }
-.header{
+
+.header {
   width: 100%;
   height: auto;
   background-color: black;
 }
-.navbar{
+
+.navbar {
   display: flex;
   justify-content: space-between;
   font-size: 20px;
@@ -22,7 +24,8 @@ body {
   font-weight: 900;
   font-family: 'Times New Roman', Times, serif;
 }
-.menu ul li{
+
+.menu ul li {
   display: inline;
   align-items: center;
   justify-content: center;
@@ -30,24 +33,28 @@ body {
   list-style: none;
 
 }
-.menu ul li a{
+
+.menu ul li a {
   text-decoration: none;
   color: white;
 }
-.search{
+
+.search {
   align-items: center;
   justify-content: center;
   display: flex;
   padding-right: 20px;
 }
-.search input{
+
+.search input {
   font-size: 20px;
   border-radius: 20px;
   padding-left: 30px;
-  padding:10px 20px;
-  
+  padding: 10px 20px;
+
 }
-.menu ul li:hover Link{
+
+.menu ul li:hover Link {
   color: yellow;
   cursor: pointer;
 }
@@ -56,18 +63,58 @@ body {
 /* Card */
 
 
-.container-card{
-width: 1200px;
-margin: auto;
+.container-card {
+  width: 1200px;
+  margin: auto;
 }
 
-.card{
+.card {
   width: 300px;
   height: auto;
+  margin: auto;
+  font-size: 25px;
+  border: 1px solid white;
+  background-color: white;
+  color: black;
+  transition: all 1ms;
 }
-.grid{
+
+:hover .card {
+  color: blue;
+  cursor: pointer;
+}
+
+.grid {
   display: grid;
-  grid-template-columns: 300px 300px 300px 300px;
-  grid-gap: 20rem;
+  grid-template-columns: 100px 100px 100px 100px;
+  grid-column-gap: 20rem;
+  grid-row-gap: 5rem;
   text-align: center;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.detail {
+  margin: auto;
+}
+
+.share {
+  color: yellow;
+  text-shadow: 1px 1px 10px black;
+}
+
+@media (max-width:500px) {
+  .navbar {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width:500px) {
+  .menu ul {
+    display: grid;
+    flex-direction: column;
+  }
+
 }

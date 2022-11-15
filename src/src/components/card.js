@@ -1,20 +1,14 @@
+//import{useEffect, useState} from "react"
+const image="https://www.themoviedb.org/t/p/w220_and_h330_face";
 
-function Card() {
-
+function Card({ title, original_title, vote_average, backdrop_path, date, img, rate}) {
     return (
-        <div className="container-card">
-            <div className="card">
-                <img src="https://image.tmdb.org/t/p/w500//b6IRp6Pl2Fsq37r9jFhGoLtaqHm.jpg" />
-                <div>
-                    <h1>Title</h1>
-                </div>
-                <div className="detail">
-                    <h3>Terrifier 2</h3>
-                    <h3>70% | 2022-10-06</h3>
-                    <h3>Genre</h3>
-                    <h3>SHAER</h3>
-                </div>
-            </div>
+        <div className="card">
+            <img src={image+img}/>
+            <h3>{original_title}</h3>
+            <h3>{date}</h3>
+            <h3>{rate}</h3>
+            <h3 className="share">SHAER</h3>
         </div>
 
     )
