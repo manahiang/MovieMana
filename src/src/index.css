@@ -54,8 +54,8 @@ body {
 
 }
 
-.menu ul li:hover Link {
-  color: yellow;
+.menu ul li:hover a{
+  color: rgb(247, 167, 8);
   cursor: pointer;
 }
 
@@ -64,19 +64,17 @@ body {
 
 
 .container-card {
-  width: 1200px;
   margin: auto;
 }
 
 .card {
-  width: 300px;
+  width: auto;
   height: auto;
   margin: auto;
-  font-size: 25px;
-  border: 1px solid white;
+  font-size: 20px;
+  border: 1px solid rgb(3, 2, 2);
   background-color: white;
   color: black;
-  transition: all 1ms;
 }
 
 :hover .card {
@@ -86,8 +84,8 @@ body {
 
 .grid {
   display: grid;
-  grid-template-columns: 100px 100px 100px 100px;
-  grid-column-gap: 20rem;
+  grid-template-columns: 200px 200px 200px 200px;
+  grid-column-gap: 25rem;
   grid-row-gap: 5rem;
   text-align: center;
   align-items: center;
@@ -100,11 +98,11 @@ body {
 }
 
 .share {
-  color: yellow;
-  text-shadow: 1px 1px 10px black;
+  color: rgb(239, 181, 8);
+  font-weight: 500;
 }
 
-@media (max-width:500px) {
+/* @media (max-width:500px) {
   .navbar {
     display: grid;
     grid-template-columns: 1fr;
@@ -117,4 +115,62 @@ body {
     flex-direction: column;
   }
 
+} */
+
+.container-card-details{
+  width: 1800px;
+  height: auto;
+  margin: auto;
+
+}
+.container-card-details .main{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 10rem;
+  justify-content: space-around;
+}
+.main .img img{
+  width: 300px;
+  height: auto;
+}
+.details{
+  font-family: 'Times New Roman', Times, serif;
+}
+.cast{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.cast .image-datail{
+  width: 440px;
+  height: 400px;
+  border: 1px solid white;
+  cursor: pointer;
+}
+.images{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.images .image{
+  width: 440px;
+  height: 400px;
+  border: 1px solid white;
+}
+
+
+.container-tv-show{
+  width: 1800px;
+  height: auto;
+  margin: auto;
+  color: black;
+}
+.card-tv-show{
+  width: 500px;
+  height: auto;
+  border: 5px solid white;
+  background-color: white;
+  text-align: left;
+}
+ .card-tv-show img{
+  height: 400px;
+  width: 500px;
 }

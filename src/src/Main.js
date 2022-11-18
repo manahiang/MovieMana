@@ -1,15 +1,19 @@
 import { useEffect, useState } from 'react';
-import Card from './components/card';
 import './index.css'
-//const url = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhZTJiOGZjZTg5ODliMzlmY2U2NGEwZmQ4NTlmNTNkOCIsInN1YiI6IjVlOTk2MjJkZDE0NDQzMDAxOTUyNzFjNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Xzho6lktWFTUo9di-EzmjkvwgVvMTco_QeqvLqbHupI";
+import { Link, NavLink } from "react-router-dom"
+import Tvshows from './components/tv-shows';
+import CardDetails from './components/card-detail';
+const api_key = "3d29277cead85831acf050c11756e8a2"
+const urls = "https://api.themoviedb.org/3/discover/movie/?api_key"
+const image = "https://image.tmdb.org/t/p/w500";
 
-function Main() {
+function Main({ movies }) {
     const [data, setData] = useState([])
-    const url = "https://api.themoviedb.org/3/movie/popular?api_key=3d29277cead85831acf050c11756e8a2"
+    const url = `${urls}=${api_key}`
     const Fetch = async () => {
         const data = await fetch(url);
         const movies = await data.json();
-        console.log(movies.results);
+        console.log(movies);
         setData(movies.results)
     }
     useEffect(() => {
@@ -21,8 +25,8 @@ function Main() {
                 <div className='navbar'>
                     <div className='menu'>
                         <ul>
-                            <li><a href='#'>Movies App</a></li>
-                            <li><a href='#'>Movies </a></li>
+                            <li>Movies</li>
+                            <li><a href='#'>Movies</a></li>
                             <li><a href='#'>TV shows</a></li>
                             <li><a href='#'>actors</a></li>
                         </ul>
@@ -31,26 +35,28 @@ function Main() {
                         <input type="text" placeholder="search" />
                     </div>
                 </div>
+                <hr />
 
-            </div>
-            <hr />
-            <h1 style={{ textAlign: 'center', color: 'yellow' }}>Popular movies</h1>
-            <div className='grid'>
-                {
-                    data.map((movies) => (
-                        <Card
-                            title={movies.title} vote_average={movies.vote_average}
-                            original_title={movies.original_title}
-                            date={movies.release_date} img={movies.backdrop_path}
-                            rate={movies.vote_average
-                            }
-                             />
-                    ))
-                }
+                <h1 style={{ textAlign: 'center', color: 'yellow' }}>Popular movies</h1>
+                <div className='grid'>
+                    {
+                        data.map((movies) => (
+
+                            <div className="card" key={movies.id}>
+                                <Link to={"/card-details/" + movies.id} key={movies.id}>
+                                    <img src={image + movies.backdrop_path}/>
+                                    <h3>{movies.title}</h3>
+                                    <h3>{movies.release_date}</h3>
+                                    <h3>{movies.vote_average}</h3>
+                                    <h3 className="share">SHAER</h3>
+                                </Link>
+                            </div>
+
+                        ))
+                    }
+                </div>
             </div>
         </div>
-
     )
-
 }
 export default Main;
