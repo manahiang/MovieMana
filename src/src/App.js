@@ -3,9 +3,9 @@ import './index.css'
 import './App.css';
 import Main from './Main';
 import CardDetails from './components/card-detail';
-import { BrowserRouter, createBrowserRouter, Route, RouterProvider, Routes } from "react-router-dom"
+import { createBrowserRouter, RouterProvider, } from "react-router-dom"
 import React from 'react';
-import Tvshows from './components/tv-shows';
+import Actors from './components/actors';
 
 function App() {
   const router = createBrowserRouter([
@@ -14,27 +14,20 @@ function App() {
       element: <Main />,
     },
     {
-      path: "/card-details/:id",
+      path: "card-details/:id",
       element: <CardDetails />,
     },
     {
-      
+      path: "actors/:id",
+      element: <Actors />,
     }
   ]);
-
+  
   return (
-
 
     <div>
       {
-        // <BrowserRouter>
-        //   <Main />
-        //   <Routes>
-        //     <Route path='/' element={<Main/>}/>
-        //     <Route path='/card-details' element={<CardDetails />} />
-        //   </Routes>
-        // </BrowserRouter>
-         <RouterProvider router={router} />
+        <RouterProvider router={router} />
       }</div>
   );
 }
