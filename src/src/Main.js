@@ -5,7 +5,7 @@ const api_key = "3d29277cead85831acf050c11756e8a2"
 const urls = "https://api.themoviedb.org/3/discover/movie/?api_key"
 const image = "https://image.tmdb.org//t/p/w220_and_h330_face";
 
-function Main({ movies }) {
+function Main() {
     const [data, setData] = useState([])
     const url = `${urls}=${api_key}`
     const Fetch = async () => {

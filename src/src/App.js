@@ -8,17 +8,21 @@ import React from 'react';
 import Actors from './components/actors';
 
 function App() {
+  
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Main />,
-    },
+      element: <Main/>},
     {
       path: "card-details/:id",
       element: <CardDetails />,
     },
     {
       path: "actors/:id",
+      element: <Actors />,
+    },
+    {
+      path: "cast/:id",
       element: <Actors />,
     }
   ]);

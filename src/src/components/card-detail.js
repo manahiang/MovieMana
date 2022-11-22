@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-const api_key = "3d29277cead85831acf050c11756e8a2&&append_to_response=videos"
+import { useParams, Link } from 'react-router-dom'
+const api_key = "3d29277cead85831acf050c11756e8a2&&append_to_response=credits,images,videos"
 const image = "https://image.tmdb.org/t/p/w500";
-//const urls = "https://api.themoviedb.org/3/discover/movie/credit?api_key"
+const urls = "https://api.themoviedb.org/3/discover/movie/credit?api_key"
 
-function CardDetails() {
+function CardDetails({router}) {
     const { id } = useParams();
     const [singleMovie, setSingleMovie] = useState([])
     const [trailer, setTrailer] = useState("")
@@ -51,40 +51,37 @@ function CardDetails() {
             <hr />
             <h1>Cast</h1>
             <div className='cast'>
-                <div className='cast-title'>
-                    <img src="https://image.tmdb.org/t/p/w500//pDvjTHGv8NhBkbIcBJFGt9zDw8.jpg" />
-                    <h2><b>Name</b></h2>
-                    <h2>Title</h2>
-                </div>
 
-                <div className='cast-title'>
-                    <img src="https://image.tmdb.org/t/p/w500//pDvjTHGv8NhBkbIcBJFGt9zDw8.jpg" />
-                    <h2>Name</h2>
-                    <h2>Title</h2>
-                </div>
+                {/* Get array from cast */}
 
-                <div className='cast-title'>
-                    <img src="https://image.tmdb.org/t/p/w500//pDvjTHGv8NhBkbIcBJFGt9zDw8.jpg" />
-                    <h2>Name</h2>
-                    <h2>Title</h2>
-                </div>
+                {
+                    singleMovie.credits?.cast.map((casts) => (
 
-                <div className='cast-title'>
-                    <img src="https://image.tmdb.org/t/p/w500//pDvjTHGv8NhBkbIcBJFGt9zDw8.jpg" />
-                    <h2>Name</h2>
-                    <h2>Title</h2>
-                </div>
+                        <div>
 
+                            {/* Link to cast details */}
 
+                            <Link to={"cast-detail/" + casts.id} style={{ textDecoration: 'none' }}>
+                                <div className='cast-title'>
+                                    <img src={image + casts.profile_path} />
+                                    <h2 style={{ fontWeight: '200' }}>{casts.character}</h2>
+                                    <h2>{casts.original_name}</h2>
+                                </div>
+                            </Link>
+                        </div>
 
+                    ))
+                }
             </div>
-            {/* <h1>Image</h1>
-            <div className='images'>
-                <div className='image'></div>
-                <div className='image'></div>
-                <div className='image'></div>
-                <div className='image'></div>
-            </div> */}
+            <hr />
+            <h1>Images</h1>
+            <div className='grid-image'>
+                {
+                    singleMovie.images?.backdrops.map((imagess) => (
+                        <img src={image + imagess.file_path} />
+                    ))
+                }
+            </div>
         </div>
     )
 }
