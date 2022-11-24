@@ -1,35 +1,31 @@
 //import logo from './logo.svg';
 import './index.css'
 import './App.css';
-import Main from './Main';
+import MainPage from './Main';
 import CardDetails from './components/card-detail';
 import { createBrowserRouter, RouterProvider, } from "react-router-dom"
-import React from 'react';
-import Actors from './components/actors';
+import CastDetails from './components/cast-details';
+import Header from './components/header';
 
 function App() {
-  
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Main/>},
+      element: <MainPage />,
+    },
     {
       path: "card-details/:id",
       element: <CardDetails />,
     },
     {
-      path: "actors/:id",
-      element: <Actors />,
-    },
-    {
-      path: "cast/:id",
-      element: <Actors />,
+      path: "card-details/:id/cast-details/:id",
+      element: <CastDetails/>
     }
   ]);
-  
-  return (
 
+  return (
     <div>
+      <Header />
       {
         <RouterProvider router={router} />
       }</div>

@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 const api_key = "3d29277cead85831acf050c11756e8a2&&append_to_response=credits,images,videos"
 const image = "https://image.tmdb.org/t/p/w500";
-const urls = "https://api.themoviedb.org/3/discover/movie/credit?api_key"
 
-function CardDetails({router}) {
+function CardDetails( ) {
     const { id } = useParams();
     const [singleMovie, setSingleMovie] = useState([])
     const [trailer, setTrailer] = useState("")
@@ -28,7 +27,7 @@ function CardDetails({router}) {
     return (
         <div className='container-card-details'>
             <div className='main'>
-                <div><img src={image + singleMovie.poster_path} width="400" height={600} /></div>
+                <div><img src={image+singleMovie.poster_path} width="400" height={600}/></div>
                 <div className='details'>
                     <h1>{singleMovie.original_title}</h1>
                     <h3>{singleMovie.vote_average} | {singleMovie.release_date} | Action Adventure Science Fiction</h3><br /><br />
@@ -61,15 +60,14 @@ function CardDetails({router}) {
 
                             {/* Link to cast details */}
 
-                            <Link to={"cast-detail/" + casts.id} style={{ textDecoration: 'none' }}>
+                            <Link to={"cast-details/" + casts.id} key={casts.id} style={{ textDecoration: 'none' }}>
                                 <div className='cast-title'>
-                                    <img src={image + casts.profile_path} />
+                                    <img src={image+casts.profile_path} />
                                     <h2 style={{ fontWeight: '200' }}>{casts.character}</h2>
                                     <h2>{casts.original_name}</h2>
                                 </div>
                             </Link>
                         </div>
-
                     ))
                 }
             </div>
@@ -78,11 +76,12 @@ function CardDetails({router}) {
             <div className='grid-image'>
                 {
                     singleMovie.images?.backdrops.map((imagess) => (
-                        <img src={image + imagess.file_path} />
+                        <img src={image+imagess.file_path} />
                     ))
                 }
             </div>
         </div>
+
     )
 }
 
