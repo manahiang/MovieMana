@@ -1,30 +1,30 @@
 import React from 'react'
-import{Link} from "react"
-
+import { Link } from "react-router-dom";
+import { BiMovie } from "react-icons/bi";
 function Header() {
-  return (
-    <div>
+    return (
+        <div>
 
-<div className='header'>
+            <div className='header'>
                 <div className='navbar'>
                     <div className='menu'>
                         <ul>
-                            <li>Movie App</li>
-                            <li><a href="">Movies</a></li>
-                            <li><a href="">Movies</a></li>
-                            <li><a href="">Actors</a></li>
-                        
+                            <li><BiMovie className="icon"/>MoviesApp</li>
+                            <li><Link to="/">Movies</Link></li>
+                            <li><Link to="tvshows">TV shows</Link></li>
+                            <li><Link to={"actors"}>Actors</Link></li>
                         </ul>
                     </div>
                     <div className='search'>
-                        <input type="text" placeholder="search" />
+                        <input type="text" placeholder="search" 
+                        />
                     </div>
                 </div>
                 <hr />
 
             </div>
-    </div>
-  )
+        </div>
+    )
 }
 
 export default Header

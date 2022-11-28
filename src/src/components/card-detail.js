@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import {BsCaretRight} from "react-icons/bs";
 import { useParams, Link } from 'react-router-dom'
 const api_key = "3d29277cead85831acf050c11756e8a2&&append_to_response=credits,images,videos"
 const image = "https://image.tmdb.org/t/p/w500";
 
-function CardDetails( ) {
+
+function CardDetails() {
     const { id } = useParams();
     const [singleMovie, setSingleMovie] = useState([])
     const [trailer, setTrailer] = useState("")
@@ -20,14 +22,14 @@ function CardDetails( ) {
     }, []);
 
     const playtrailer = () => {
-        const trailerPlay = singleMovie.videos.results.find((videos) => videos.name === "Behind The Scenes Featurette");
-        setTrailer(trailerPlay.key)
+        const playKey = singleMovie.videos.results.find((video) => video.name === "Official Trailer");
+        setTrailer(playKey.key)
         setDisplay(!display);
     }
     return (
         <div className='container-card-details'>
             <div className='main'>
-                <div><img src={image+singleMovie.poster_path} width="400" height={600}/></div>
+                <div><img src={image + singleMovie.poster_path} width="400" height={600} /></div>
                 <div className='details'>
                     <h1>{singleMovie.original_title}</h1>
                     <h3>{singleMovie.vote_average} | {singleMovie.release_date} | Action Adventure Science Fiction</h3><br /><br />
@@ -38,7 +40,7 @@ function CardDetails( ) {
                     <h2>Revenue: {singleMovie.revenue}$</h2>
                     <h2>Vote Count: {singleMovie.vote_count}</h2><br />
                     <div className='play'>
-                        <button onClick={playtrailer}>{display ? "close trailer" : "Play trailer"}</button>
+                        <button onClick={playtrailer} style={{fontSize:'15px'}}><BsCaretRight className='play-icon'/>{display ? "close trailer" : "Play trailer"}</button>
                     </div>
                     {display && (
                         <iframe width="720" height="315" allowFullScreen
@@ -62,7 +64,7 @@ function CardDetails( ) {
 
                             <Link to={"cast-details/" + casts.id} key={casts.id} style={{ textDecoration: 'none' }}>
                                 <div className='cast-title'>
-                                    <img src={image+casts.profile_path} />
+                                    <img src={image + casts.profile_path} />
                                     <h2 style={{ fontWeight: '200' }}>{casts.character}</h2>
                                     <h2>{casts.original_name}</h2>
                                 </div>
@@ -76,7 +78,7 @@ function CardDetails( ) {
             <div className='grid-image'>
                 {
                     singleMovie.images?.backdrops.map((imagess) => (
-                        <img src={image+imagess.file_path} />
+                        <img src={image + imagess.file_path} />
                     ))
                 }
             </div>
