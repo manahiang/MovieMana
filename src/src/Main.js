@@ -2,38 +2,41 @@ import { useEffect, useState } from 'react';
 import './index.css'
 import { Link, } from "react-router-dom"
 const api_key = "3d29277cead85831acf050c11756e8a2";
-const urls = "https://api.themoviedb.org/3/discover/movie/?api_key"
 const image = "https://image.tmdb.org//t/p/w220_and_h330_face";
 
 function MainPage() {
     const [data, setData] = useState([])
-    const [search, setSearch] = useState("")
-    const url = search ? "https://api.themoviedb.org/3/search/movie?" : `${urls}`
-    const Fetch = async (search) => {
-        const data = await fetch(`${url}=${api_key}&&query=${search}`);
+    const [keyword, setKeyword] = useState("")
+    const url = keyword ? "https://api.themoviedb.org/3/search/movie" : "https://api.themoviedb.org/3/discover/movie"
+    const Fetch = async (keyword) => {
+        const data = await fetch(`${url}?api_key=${api_key}&&query=${keyword}`);
         const movies = await data.json();
         console.log(movies);
         setData(movies.results)
     }
     useEffect(() => {
-        Fetch(search);
+        Fetch(keyword);
     }, []);
 
     return (
 
         <div>
-            {/* <input placeholder='search'
-                onChange={e => setSearch(e.target.value)}
-                value={search} */}
-            {/* /> */}
-            {/* <button
-                onClick={() => {
-                    Fetch(search);
-                    setSearch("");
-                }}>search</button> */}
+
+
             {/* Card */}
             <div className='container'>
                 <div className='container-card'>
+
+                    {/* Search */}
+                    <input placeholder='search'
+                        onChange={e => setKeyword(e.target.value)}
+                        value={keyword} className="input-search" />
+                    <button
+                        onClick={() => {
+                            Fetch(keyword);
+                        }} className="button-search">search</button>
+
+
                     <h1 style={{ color: '#fa9326', fontSize: '20px' }}>Popular movies</h1>
                     <div className='grid'>
                         {
