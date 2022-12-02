@@ -20,6 +20,7 @@ function Actors() {
 
   }, []);
   return (
+    actors?
     <div className='container-actors'>
 
       <input placeholder='search'
@@ -47,6 +48,10 @@ function Actors() {
         </div>
       </div>
     </div>
+    :
+    <>
+    <h1>Fetching data ....</h1>
+    </>
   )
 }
 

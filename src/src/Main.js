@@ -19,6 +19,7 @@ function MainPage() {
     }, []);
 
     return (
+        data?
 
         <div>
 
@@ -65,6 +66,10 @@ function MainPage() {
             </div>
 
         </div>
+        :
+        <>
+        <h1>Fetching data.....</h1>
+        </>
     )
 }
 export default MainPage;

@@ -23,6 +23,7 @@ function TVshows() {
 
 
     return (
+        tvshows?
         <div className='container-tvshows'>
             <div className='center'>
                 <input placeholder='search'
@@ -52,6 +53,10 @@ function TVshows() {
             </div>
 
         </div>
+        :
+        <>
+        <h1>Fetching data ....</h1>
+        </>
     )
 }
 
